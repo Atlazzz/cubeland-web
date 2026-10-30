@@ -1,0 +1,73 @@
+.tut { padding: 56px 0; border-top: 1px solid var(--line); }
+.tut__inner { padding: 0 40px; }
+
+.tut__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.tut__title { font-size: 26px; }
+.tut__sub { color: var(--ink-dim); font-size: 14.5px; margin-top: 4px; }
+
+.tut__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tut__card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.tut__thumb {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--bg-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tut__steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.tut__steps-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.tut__steps-label {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.tut__dots { position: absolute; bottom: 10px; left: 10px; display: flex; gap: 3px; }
+.tut__dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); }
+.tut__dots span.on { background: var(--yellow); }
+
+.tut__body { padding: 13px 14px 16px; }
+.tut__card-title { font-size: 14.5px; }
+.tut__meta { font-size: 12px; color: var(--ink-faint); margin-top: 5px; }
+
+@media (max-width: 900px) {
+  .tut__inner { padding: 0 18px; }
+  .tut__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .tut__grid { grid-template-columns: 1fr; }
+}
