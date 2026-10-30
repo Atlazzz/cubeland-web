@@ -1,0 +1,22 @@
+.footer { border-top: 1px solid var(--line); padding: 36px 0 24px; margin-top: 24px; }
+
+.footer__inner {
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.footer__brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; }
+.footer__tagline { color: var(--ink-dim); font-size: 14px; margin-top: 2px; }
+.footer__small { color: var(--ink-faint); font-size: 13px; margin-top: 10px; }
+
+.footer__links { display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--ink-dim); }
+.footer__links a:hover { color: var(--ink); }
+
+.footer__copy { padding: 24px 40px 0; color: var(--ink-faint); font-size: 12.5px; }
+
+@media (max-width: 900px) {
+  .footer__inner, .footer__copy { padding-left: 18px; padding-right: 18px; }
+}

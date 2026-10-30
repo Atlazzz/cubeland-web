@@ -1,0 +1,28 @@
+.about { padding: 56px 0; border-top: 1px solid var(--line); }
+
+.about__inner {
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about__title { font-size: 26px; margin-bottom: 12px; }
+.about__lede { color: var(--ink-dim); max-width: 55ch; }
+
+.about__list { list-style: none; display: grid; gap: 14px; }
+
+.about__list li {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 16px 18px;
+}
+
+.about__list h3 { font-size: 15px; margin-bottom: 4px; }
+.about__list p { font-size: 13.5px; color: var(--ink-dim); }
+
+@media (max-width: 900px) {
+  .about__inner { grid-template-columns: 1fr; padding: 0 18px; gap: 28px; }
+}
