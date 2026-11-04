@@ -1,5 +1,6 @@
 import ProductCard from './ProductCard';
 import './featured.css';
+import { Link } from 'react-router-dom';
 
 const PRODUCTOS = [
   { id: 1, nombre: 'CubeLand Speed Pro', tipo: '3x3', nivel: 'Intermedio',
@@ -25,7 +26,7 @@ function FeaturedProducts() {
             <h2 className="featured__title">Productos destacados</h2>
             <p className="featured__sub">Una muestra de lo que encontrarás en nuestro catálogo.</p>
           </div>
-          <button className="btn btn--ghost">Ver todo el catálogo</button>
+          <Link to="/catalogo" className="btn btn--ghost">Ver todo el catálogo</Link>
         </div>
 
         <div className="featured__grid">

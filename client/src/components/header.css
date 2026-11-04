@@ -43,7 +43,7 @@
 
 .header__link:hover { color: var(--ink); }
 
-.header__link--active {
+.header__link.active {
   color: var(--ink);
   border-color: var(--yellow);
 }

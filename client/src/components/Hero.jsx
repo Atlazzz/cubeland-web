@@ -1,5 +1,6 @@
 import cuboColor from '../assets/images/cubo-3x3-color.svg';
 import './hero.css';
+import { Link } from 'react-router-dom';
 
 function Hero() {
   return (
@@ -14,7 +15,7 @@ function Hero() {
             tiempo personal.
           </p>
           <div className="hero__actions">
-            <button className="btn btn--primary">Ver catálogo</button>
+          <Link to="/catalogo" className="btn btn--primary">Ver catálogo</Link>
             <button className="btn btn--ghost">Aprender a resolverlo</button>
           </div>
         </div>

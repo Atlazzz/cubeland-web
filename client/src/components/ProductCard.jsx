@@ -5,7 +5,8 @@ const COLORES = {
   g: '#3F9142', o: '#F2932B', w: '#F5F3EF', k: '#302F34',
 };
 
-function ProductCard({ nombre, tipo, nivel, descripcion, precio, stock, colores }) {
+function ProductCard({ nombre, tipo, nivel, descripcion, precio, stock, colores = 'ybrgowkkk' }){
+  
   const agotado = stock === 0;
   const pocas = stock > 0 && stock <= 5;
   const textoStock = agotado ? 'Agotado' : pocas ? 'Últimas piezas' : 'En stock';

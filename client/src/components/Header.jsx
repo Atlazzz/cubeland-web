@@ -1,3 +1,4 @@
+import { Link, NavLink } from 'react-router-dom';
 import logoCubo from '../assets/images/logo-cubeland-cubo-claro.png';
 import logoNombre from '../assets/images/logo-cubeland-nombre-claro.png';
 import './header.css';
@@ -6,15 +7,15 @@ function Header() {
   return (
     <header className="header">
       <div className="header__inner">
-        <a href="#inicio" className="header__logo">
-            <img className="header__logo-cubo" src={logoCubo} alt="" />
-            <img className="header__logo-nombre" src={logoNombre} alt="CubeLand" />
-        </a>
+        <Link to="/" className="header__logo">
+          <img className="header__logo-cubo" src={logoCubo} alt="" />
+          <img className="header__logo-nombre" src={logoNombre} alt="CubeLand" />
+        </Link>
 
         <nav className="header__nav">
-          <a href="#catalogo" className="header__link">Catálogo</a>
-          <a href="#tutoriales" className="header__link">Tutoriales</a>
-          <a href="#contacto" className="header__link">Contacto</a>
+          <NavLink to="/catalogo" className="header__link">Catálogo</NavLink>
+          <NavLink to="/tutoriales" className="header__link">Tutoriales</NavLink>
+          <NavLink to="/contacto" className="header__link">Contacto</NavLink>
         </nav>
 
         <input

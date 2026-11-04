@@ -1,0 +1,22 @@
+.catalog { padding: 40px 0 56px; }
+.catalog__inner { padding: 0 40px; }
+
+.catalog__title { font-size: 30px; }
+.catalog__count { color: var(--ink-faint); font-size: 13.5px; margin: 4px 0 24px; }
+.catalog__msg { color: var(--ink-dim); padding: 32px 0; }
+.catalog__msg--error { color: var(--red); }
+
+.catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 980px) {
+  .catalog__inner { padding: 0 18px; }
+  .catalog__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .catalog__grid { grid-template-columns: 1fr; }
+}

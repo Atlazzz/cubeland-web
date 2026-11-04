@@ -1,21 +1,36 @@
-import Header from './components/Header';
-import Hero from './components/Hero';
-import FeaturedProducts from './components/FeaturedProducts';
-import Tutorials from './components/Tutorials';
-import About from './components/About';
-import Footer from './components/Footer';
+import { Link, NavLink } from 'react-router-dom';
+import logoCubo from '../assets/images/logo-cubeland-cubo-claro.png';
+import logoNombre from '../assets/images/logo-cubeland-nombre-claro.png';
+import './header.css';
 
-function App() {
+function Header() {
   return (
-    <>
-      <Header />
-      <Hero />
-      <FeaturedProducts />
-      <Tutorials />
-      <About />
-      <Footer />
-    </>
+    <header className="header">
+      <div className="header__inner">
+        <Link to="/" className="header__logo">
+          <img className="header__logo-cubo" src={logoCubo} alt="" />
+          <img className="header__logo-nombre" src={logoNombre} alt="CubeLand" />
+        </Link>
+
+        <nav className="header__nav">
+          <NavLink to="/catalogo" className="header__link">Catálogo</NavLink>
+          <NavLink to="/tutoriales" className="header__link">Tutoriales</NavLink>
+          <NavLink to="/contacto" className="header__link">Contacto</NavLink>
+        </nav>
+
+        <input
+          className="header__search"
+          type="search"
+          placeholder="Buscar cubos, tutoriales…"
+        />
+
+        <div className="header__actions">
+          <button className="icon-btn" aria-label="Cuenta">👤</button>
+          <button className="icon-btn" aria-label="Carrito">🛒</button>
+        </div>
+      </div>
+    </header>
   );
 }
 
-export default App;
+export default Header;

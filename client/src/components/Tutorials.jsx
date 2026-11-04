@@ -1,4 +1,5 @@
 import './tutorials.css';
+import { Link } from 'react-router-dom';
 
 const TUTORIALES = [
   { id: 1, titulo: 'Primera cara: método capa por capa', tipo: '3x3', nivel: 'Principiante', dificultad: 1, pasos: 8 },
@@ -25,7 +26,7 @@ function Tutorials() {
             <h2 className="tut__title">Aprende a resolverlo</h2>
             <p className="tut__sub">Guías paso a paso con imágenes, por tipo de cubo y nivel de dificultad.</p>
           </div>
-          <button className="btn btn--ghost">Ver todos los tutoriales</button>
+          <Link to="/tutoriales" className="btn btn--ghost">Ver todos los tutoriales</Link>
         </div>
 
         <div className="tut__grid">

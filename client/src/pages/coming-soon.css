@@ -1,0 +1,29 @@
+.soon {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 18px;
+}
+
+.soon__box {
+  max-width: 480px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 48px 32px;
+}
+
+.soon__tag {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--yellow);
+  border: 1px solid var(--yellow);
+  border-radius: 20px;
+  padding: 3px 12px;
+  margin-bottom: 16px;
+}
+
+.soon__title { font-size: 30px; }
+.soon__text { color: var(--ink-dim); margin: 12px 0 28px; }
