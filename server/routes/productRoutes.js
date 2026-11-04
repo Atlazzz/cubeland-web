@@ -3,19 +3,80 @@ import pool from '../db.js';
 
 const router = Router();
 
-// GET /api/productos  →  lista de productos activos
+const NIVELES_VALIDOS = ['beginner', 'intermediate', 'advanced'];
+
+// Convierte un texto a número. Devuelve null si no viene y NaN si no es válido.
+function aNumero(valor) {
+  if (valor === undefined || valor === '') return null;
+  const n = Number(valor);
+  return Number.isFinite(n) && n >= 0 ? n : NaN;
+}
+
+// GET /api/productos?q=&categoria=&tipo=&nivel=&min=&max=
 router.get('/', async (req, res) => {
   try {
-    const [productos] = await pool.query(`
-      SELECT p.id, p.name, p.description, p.price, p.stock, p.difficulty,
-             c.name  AS category,
-             ct.name AS cube_type
-      FROM products p
-      JOIN categories c ON c.id = p.category_id
-      LEFT JOIN cube_types ct ON ct.id = p.cube_type_id
-      WHERE p.is_active = TRUE
-      ORDER BY p.id
-    `);
+    const { q, categoria, tipo, nivel, min, max } = req.query;
+    const condiciones = ['p.is_active = TRUE'];
+    const valores = [];
+
+    if (q && q.trim()) {
+      const patron = `%${q.trim()}%`;
+      condiciones.push('(p.name LIKE ? OR p.description LIKE ?)');
+      valores.push(patron, patron);
+    }
+
+    if (categoria) {
+      if (!Number.isInteger(Number(categoria))) {
+        return res.status(400).json({ mensaje: 'Filtro no válido' });
+      }
+      condiciones.push('p.category_id = ?');
+      valores.push(Number(categoria));
+    }
+
+    if (tipo) {
+      if (!Number.isInteger(Number(tipo))) {
+        return res.status(400).json({ mensaje: 'Filtro no válido' });
+      }
+      condiciones.push('p.cube_type_id = ?');
+      valores.push(Number(tipo));
+    }
+
+    if (nivel) {
+      if (!NIVELES_VALIDOS.includes(nivel)) {
+        return res.status(400).json({ mensaje: 'Filtro no válido' });
+      }
+      condiciones.push('p.difficulty = ?');
+      valores.push(nivel);
+    }
+
+    const minimo = aNumero(min);
+    const maximo = aNumero(max);
+    if (Number.isNaN(minimo) || Number.isNaN(maximo)) {
+      return res.status(400).json({ mensaje: 'El rango de precio no es válido' });
+    }
+    if (minimo !== null && maximo !== null && minimo > maximo) {
+      return res.status(400).json({ mensaje: 'El precio mínimo no puede ser mayor que el máximo' });
+    }
+    if (minimo !== null) {
+      condiciones.push('p.price >= ?');
+      valores.push(minimo);
+    }
+    if (maximo !== null) {
+      condiciones.push('p.price <= ?');
+      valores.push(maximo);
+    }
+
+    const [productos] = await pool.query(
+      `SELECT p.id, p.name, p.description, p.price, p.stock, p.difficulty,
+              c.name  AS category,
+              ct.name AS cube_type
+       FROM products p
+       JOIN categories c ON c.id = p.category_id
+       LEFT JOIN cube_types ct ON ct.id = p.cube_type_id
+       WHERE ${condiciones.join(' AND ')}
+       ORDER BY p.id`,
+      valores
+    );
     res.json(productos);
   } catch (error) {
     console.error(error);

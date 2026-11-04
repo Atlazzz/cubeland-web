@@ -20,3 +20,34 @@
 @media (max-width: 520px) {
   .catalog__grid { grid-template-columns: 1fr; }
 }
+
+.catalog__filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 20px 0 28px;
+}
+
+.catalog__form { display: contents; }
+
+.catalog__field {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  color-scheme: dark;
+  font-family: inherit;
+  font-size: 13.5px;
+  padding: 9px 12px;
+  border-radius: var(--radius-s);
+}
+
+.catalog__field--search { width: 260px; }
+.catalog__field--price { width: 120px; }
+
+@media (max-width: 520px) {
+  .catalog__field--search { width: 100%; }
+}

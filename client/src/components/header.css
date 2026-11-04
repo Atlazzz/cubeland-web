@@ -79,3 +79,5 @@
   .header__nav { display: none; }
   .header__search { flex: 1; width: auto; }
 }
+
+.header__search-form { display: contents; }

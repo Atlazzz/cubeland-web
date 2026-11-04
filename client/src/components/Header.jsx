@@ -1,9 +1,17 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logoCubo from '../assets/images/logo-cubeland-cubo-claro.png';
 import logoNombre from '../assets/images/logo-cubeland-nombre-claro.png';
 import './header.css';
 
 function Header() {
+  const navigate = useNavigate();
+
+  function buscar(e) {
+    e.preventDefault();
+    const texto = String(new FormData(e.currentTarget).get('q') || '').trim();
+    navigate(texto ? `/catalogo?q=${encodeURIComponent(texto)}` : '/catalogo');
+  }
+
   return (
     <header className="header">
       <div className="header__inner">
@@ -18,11 +26,14 @@ function Header() {
           <NavLink to="/contacto" className="header__link">Contacto</NavLink>
         </nav>
 
-        <input
-          className="header__search"
-          type="search"
-          placeholder="Buscar cubos, tutoriales…"
-        />
+        <form className="header__search-form" onSubmit={buscar}>
+          <input
+            className="header__search"
+            type="search"
+            name="q"
+            placeholder="Buscar cubos…"
+          />
+        </form>
 
         <div className="header__actions">
           <button className="icon-btn" aria-label="Cuenta">👤</button>
