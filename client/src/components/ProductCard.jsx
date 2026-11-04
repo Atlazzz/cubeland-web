@@ -1,12 +1,13 @@
 import './product-card.css';
+import { Link } from 'react-router-dom';
 
 const COLORES = {
   y: '#EFC93D', b: '#3465B0', r: '#E8432A',
   g: '#3F9142', o: '#F2932B', w: '#F5F3EF', k: '#302F34',
 };
 
-function ProductCard({ nombre, tipo, nivel, descripcion, precio, stock, colores = 'ybrgowkkk' }){
-  
+function ProductCard({ id, nombre, tipo, nivel, descripcion, precio, stock, colores = 'ybrgowkkk' }) {
+
   const agotado = stock === 0;
   const pocas = stock > 0 && stock <= 5;
   const textoStock = agotado ? 'Agotado' : pocas ? 'Últimas piezas' : 'En stock';
@@ -34,7 +35,7 @@ function ProductCard({ nombre, tipo, nivel, descripcion, precio, stock, colores 
         <p className="card__desc">{descripcion}</p>
         <div className="card__foot">
           <span className="card__price">${precio.toLocaleString('es-MX')}</span>
-          <button className="btn btn--ghost btn--sm">Ver</button>
+          <Link to={`/producto/${id}`} className="btn btn--ghost btn--sm">Ver</Link>
         </div>
       </div>
     </article>

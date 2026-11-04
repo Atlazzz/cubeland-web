@@ -1,36 +1,41 @@
-import { Link, NavLink } from 'react-router-dom';
-import logoCubo from '../assets/images/logo-cubeland-cubo-claro.png';
-import logoNombre from '../assets/images/logo-cubeland-nombre-claro.png';
-import './header.css';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import CatalogPage from './pages/CatalogPage';
+import ComingSoonPage from './pages/ComingSoonPage';
+import ProductDetailPage from './pages/ProductDetailPage';
 
-function Header() {
+function App() {
   return (
-    <header className="header">
-      <div className="header__inner">
-        <Link to="/" className="header__logo">
-          <img className="header__logo-cubo" src={logoCubo} alt="" />
-          <img className="header__logo-nombre" src={logoNombre} alt="CubeLand" />
-        </Link>
-
-        <nav className="header__nav">
-          <NavLink to="/catalogo" className="header__link">Catálogo</NavLink>
-          <NavLink to="/tutoriales" className="header__link">Tutoriales</NavLink>
-          <NavLink to="/contacto" className="header__link">Contacto</NavLink>
-        </nav>
-
-        <input
-          className="header__search"
-          type="search"
-          placeholder="Buscar cubos, tutoriales…"
-        />
-
-        <div className="header__actions">
-          <button className="icon-btn" aria-label="Cuenta">👤</button>
-          <button className="icon-btn" aria-label="Carrito">🛒</button>
-        </div>
-      </div>
-    </header>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/catalogo" element={<CatalogPage />} />
+        <Route
+    path="/tutoriales"
+    element={
+      <ComingSoonPage
+        titulo="Tutoriales"
+        descripcion="Estamos preparando guías paso a paso con imágenes, por tipo de cubo y nivel de dificultad."
+      />
+    }
+  />
+  <Route
+    path="/contacto"
+    element={
+      <ComingSoonPage
+        titulo="Contacto"
+        descripcion="Pronto podrás ver nuestros datos de contacto, la ubicación en el mapa y enviarnos un mensaje."
+      />
+    }
+  />
+  <Route path="/producto/:id" element={<ProductDetailPage />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 
-export default Header;
+export default App;

@@ -43,6 +43,7 @@ function CatalogPage() {
           {productos.map((p) => (
             <ProductCard
               key={p.id}
+              id={p.id}
               nombre={p.name}
               tipo={p.cube_type || p.category}
               nivel={NIVELES[p.difficulty]}
