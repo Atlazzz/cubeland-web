@@ -1,13 +1,22 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import 'dotenv/config';
 import pool from './db.js';
 import productRoutes from './routes/productRoutes.js';
 import filterRoutes from './routes/filterRoutes.js';
+import authRoutes from './routes/authRoutes.js';
+import { requireAuth, requireRole } from './middleware/auth.js';
+
+if (!process.env.JWT_SECRET) {
+  console.error('Falta JWT_SECRET en el archivo .env');
+  process.exit(1);
+}
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.get('/api/salud', async (req, res) => {
   try {
@@ -21,6 +30,12 @@ app.get('/api/salud', async (req, res) => {
 
 app.use('/api/productos', productRoutes);
 app.use('/api/filtros', filterRoutes);
+app.use('/api/auth', authRoutes);
+
+// Ruta de prueba: solo el personal autorizado puede entrar (RF-23)
+app.get('/api/admin/ping', requireAuth, requireRole('staff'), (req, res) => {
+  res.json({ mensaje: 'Acceso de personal autorizado' });
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`Servidor en http://localhost:${process.env.PORT}`);

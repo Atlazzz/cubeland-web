@@ -5,6 +5,8 @@ import HomePage from './pages/HomePage';
 import CatalogPage from './pages/CatalogPage';
 import ComingSoonPage from './pages/ComingSoonPage';
 import ProductDetailPage from './pages/ProductDetailPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
     }
   />
   <Route path="/producto/:id" element={<ProductDetailPage />} />
+  <Route path="/iniciar-sesion" element={<LoginPage />} />
+  <Route path="/registro" element={<RegisterPage />} />
       </Routes>
       <Footer />
     </>
