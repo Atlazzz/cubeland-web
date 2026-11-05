@@ -43,6 +43,12 @@ function Header() {
           {user ? (
             <>
               <span className="header__user">Hola, {user.name.split(' ')[0]}</span>
+              <NavLink
+                to="/mis-pedidos"
+                className="btn btn--ghost btn--sm header__orders"
+              >
+                Mis pedidos
+              </NavLink>
               <button className="btn btn--ghost btn--sm" onClick={logout}>Salir</button>
             </>
           ) : (

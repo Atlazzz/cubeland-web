@@ -123,7 +123,6 @@ function ProductDetail({ id }) {
             )}
 
             <AddToCart productId={producto.id} stock={producto.stock} />
-              {agotado ? 'Producto agotado' : 'Agregar al carrito'}
           </div>
         </div>
       </div>

@@ -131,7 +131,13 @@ function OrderDetail({ id }) {
           <div className="ord__line ord__line--total"><span>Total</span><span>{moneda(pedido.total)}</span></div>
         </div>
 
-        <Link to="/catalogo" className="btn btn--ghost">Seguir comprando</Link>
+         <Link to="/mis-pedidos" className="btn btn--ghost">
+          Volver a mis pedidos
+        </Link>
+
+        <Link to="/catalogo" className="btn btn--ghost">
+          Seguir comprando
+        </Link>
       </div>
     </section>
   );

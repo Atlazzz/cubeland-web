@@ -1,0 +1,112 @@
+.hist {
+  padding: 40px 0 56px;
+}
+
+.hist__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  gap: 24px;
+}
+
+.hist__title {
+  font-size: 28px;
+}
+
+.hist__intro {
+  margin-top: 6px;
+  color: var(--ink-dim);
+  font-size: 14px;
+}
+
+.hist__message {
+  padding: 24px 0;
+  color: var(--ink-dim);
+}
+
+.hist__empty {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+}
+
+.hist__empty h2 {
+  font-size: 19px;
+}
+
+.hist__empty p {
+  color: var(--ink-dim);
+}
+
+.hist__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.hist__card {
+  padding: 22px;
+  display: grid;
+  gap: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+}
+
+.hist__head,
+.hist__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hist__number {
+  font-size: 18px;
+}
+
+.hist__date {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.hist__details {
+  font-size: 14px;
+}
+
+.hist__pieces {
+  margin-top: 4px;
+  color: var(--ink-dim);
+}
+
+.hist__total {
+  color: var(--ink-dim);
+}
+
+.hist__total strong {
+  color: var(--ink);
+}
+
+.hist__card .btn {
+  justify-self: start;
+}
+
+@media (max-width: 640px) {
+  .hist__inner {
+    padding: 0 18px;
+  }
+
+  .hist__card {
+    padding: 18px;
+  }
+}

@@ -88,3 +88,34 @@
 @media (max-width: 900px) {
   .header__user { display: none; }
 }
+
+.header__orders {
+  white-space: nowrap;
+}
+
+.header__orders.active {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+@media (max-width: 640px) {
+  .header__inner {
+    height: auto;
+    min-height: 64px;
+    padding: 12px 18px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header__search {
+    order: 3;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .header__actions {
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+}
