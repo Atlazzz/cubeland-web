@@ -84,6 +84,28 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET /api/productos/destacados
+router.get('/destacados', async (req, res) => {
+  try {
+    const [productos] = await pool.query(
+      `SELECT p.id, p.name, p.description, p.price, p.stock,
+              p.difficulty, ct.name AS cube_type
+       FROM products p
+       LEFT JOIN cube_types ct ON ct.id = p.cube_type_id
+       WHERE p.is_active = TRUE AND p.is_featured = TRUE
+       ORDER BY p.id
+       LIMIT 4`
+    );
+
+    res.json(productos);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      mensaje: 'No se pudieron cargar los productos destacados',
+    });
+  }
+});
+
 // GET /api/productos/:id  →  detalle de un producto
 router.get('/:id', async (req, res) => {
   try {

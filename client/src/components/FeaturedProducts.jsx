@@ -1,39 +1,78 @@
-import ProductCard from './ProductCard';
-import './featured.css';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ProductCard from './ProductCard';
+import { peticion } from '../api';
+import './featured.css';
 
-const PRODUCTOS = [
-  { id: 1, nombre: 'CubeLand Speed Pro', tipo: '3x3', nivel: 'Intermedio',
-    descripcion: 'Magnético, tensión ajustable, corte elite.',
-    precio: 549, stock: 14, colores: 'rowbygkkk' },
-  { id: 2, nombre: 'Mini Cube 2x2', tipo: '2x2', nivel: 'Principiante',
-    descripcion: 'Ligero y compacto, ideal para empezar.',
-    precio: 249, stock: 3, colores: 'gwrybokkk' },
-  { id: 3, nombre: 'CubeLand WR 4x4', tipo: '4x4', nivel: 'Avanzado',
-    descripcion: 'Mecanismo reforzado para giros rápidos.',
-    precio: 689, stock: 9, colores: 'ybgwrokkk' },
-  { id: 4, nombre: 'Pyraminx Elite', tipo: 'Pyraminx', nivel: 'Intermedio',
-    descripcion: 'Esquinas magnéticas, giro sin fricción.',
-    precio: 399, stock: 21, colores: 'orywgbkkk' },
-];
+const NIVELES = {
+  beginner: 'Principiante',
+  intermediate: 'Intermedio',
+  advanced: 'Avanzado',
+};
 
 function FeaturedProducts() {
+  const [productos, setProductos] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    let activo = true;
+
+    peticion('/productos/destacados')
+      .then((datos) => {
+        if (activo) setProductos(datos);
+      })
+      .catch((e) => {
+        if (activo) setError(e.message);
+      })
+      .finally(() => {
+        if (activo) setCargando(false);
+      });
+
+    return () => {
+      activo = false;
+    };
+  }, []);
+
   return (
     <section className="featured" id="catalogo">
       <div className="featured__inner">
         <div className="featured__head">
           <div>
             <h2 className="featured__title">Productos destacados</h2>
-            <p className="featured__sub">Una muestra de lo que encontrarás en nuestro catálogo.</p>
+            <p className="featured__sub">
+              Una muestra de lo que encontrarás en nuestro catálogo.
+            </p>
           </div>
-          <Link to="/catalogo" className="btn btn--ghost">Ver todo el catálogo</Link>
+
+          <Link to="/catalogo" className="btn btn--ghost">
+            Ver todo el catálogo
+          </Link>
         </div>
 
-        <div className="featured__grid">
-          {PRODUCTOS.map((p) => (
-            <ProductCard key={p.id} {...p} />
-          ))}
-        </div>
+        {cargando ? (
+          <p role="status">Cargando productos destacados…</p>
+        ) : error ? (
+          <p role="alert">{error}</p>
+        ) : productos.length === 0 ? (
+          <p>Próximamente encontrarás productos destacados aquí.</p>
+        ) : (
+          <div className="featured__grid">
+            {productos.map((p) => (
+              <ProductCard
+                key={p.id}
+                id={p.id}
+                nombre={p.name}
+                tipo={p.cube_type || ''}
+                nivel={NIVELES[p.difficulty] || ''}
+                descripcion={p.description || ''}
+                precio={Number(p.price)}
+                stock={Number(p.stock)}
+                colores="rowbygkkk"
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

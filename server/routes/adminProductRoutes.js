@@ -19,6 +19,7 @@ function validarProducto(body) {
     cube_type_id,
     difficulty,
     is_active,
+    is_featured,
   } = body;
 
   if (typeof name !== 'string' || !name.trim()) {
@@ -80,6 +81,10 @@ function validarProducto(body) {
     return { error: 'El estado del producto no es válido' };
   }
 
+   if (typeof is_featured !== 'boolean') {
+    return { error: 'La selección de producto destacado no es válida' };
+  }
+
   return {
     datos: [
       name.trim(),
@@ -91,6 +96,7 @@ function validarProducto(body) {
       tipo,
       difficulty || null,
       is_active,
+      is_featured,
     ],
   };
 }
@@ -149,7 +155,8 @@ router.get('/', async (req, res) => {
   try {
     const [productos] = await pool.query(
       `SELECT id, name, description, features, price, stock,
-              category_id, cube_type_id, difficulty, is_active
+              category_id, cube_type_id, difficulty,
+              is_active, is_featured
        FROM products
        ORDER BY id DESC`
     );
@@ -167,6 +174,7 @@ router.get('/', async (req, res) => {
         ...p,
         price: Number(p.price),
         is_active: Boolean(p.is_active),
+        is_featured: Boolean(p.is_featured),
       })),
       categorias,
       tipos,
@@ -192,8 +200,9 @@ router.post('/', async (req, res) => {
     const [resultado] = await pool.query(
       `INSERT INTO products
          (name, description, features, price, stock,
-          category_id, cube_type_id, difficulty, is_active)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+          category_id, cube_type_id, difficulty,
+          is_active, is_featured)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       datos
     );
 
@@ -226,7 +235,7 @@ router.put('/:id', async (req, res) => {
       `UPDATE products
        SET name = ?, description = ?, features = ?, price = ?,
            stock = ?, category_id = ?, cube_type_id = ?,
-           difficulty = ?, is_active = ?
+           difficulty = ?, is_active = ?, is_featured = ?
        WHERE id = ?`,
       [...datos, id]
     );

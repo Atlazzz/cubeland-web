@@ -12,6 +12,7 @@ const VACIO = {
   cube_type_id: '',
   difficulty: '',
   is_active: true,
+  is_featured: false,
 };
 
 const moneda = (valor) =>
@@ -78,6 +79,7 @@ function AdminProductsPage() {
         : '',
       difficulty: producto.difficulty || '',
       is_active: producto.is_active,
+      is_featured: Boolean(producto.is_featured),
     });
 
     document.getElementById('admin-product-name')?.focus();
@@ -259,6 +261,16 @@ function AdminProductsPage() {
                   onChange={cambiar}
                 />
                 Disponible en el catálogo
+              </label>
+
+              <label className="admin__check">
+                <input
+                  type="checkbox"
+                  name="is_featured"
+                  checked={form.is_featured}
+                  onChange={cambiar}
+                />
+                Producto destacado en la página de inicio
               </label>
 
               <div className="admin__actions">
