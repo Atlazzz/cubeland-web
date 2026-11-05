@@ -12,6 +12,7 @@ import shippingRoutes from './routes/shippingRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import { requireAuth, requireRole } from './middleware/auth.js';
 import adminProductRoutes from './routes/adminProductRoutes.js';
+import adminOrderRoutes from './routes/adminOrderRoutes.js';
 
 if (!process.env.JWT_SECRET) {
   console.error('Falta JWT_SECRET en el archivo .env');
@@ -34,6 +35,7 @@ app.get('/api/salud', async (req, res) => {
 });
 
 app.use('/api/productos', productRoutes);
+app.use('/api/admin/pedidos', adminOrderRoutes);
 app.use('/api/filtros', filterRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/carrito', cartRoutes);

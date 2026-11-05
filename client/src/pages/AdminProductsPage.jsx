@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { peticion } from '../api';
 import './admin.css';
+import AdminNav from '../components/AdminNav';
 
 const VACIO = {
   name: '',
@@ -137,6 +138,7 @@ function AdminProductsPage() {
   return (
     <section className="admin">
       <h1>Administración de productos</h1>
+      <AdminNav />
 
       {error && <p className="admin__error" role="alert">{error}</p>}
       {mensaje && <p className="admin__success" role="status">{mensaje}</p>}

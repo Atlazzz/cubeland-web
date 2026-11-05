@@ -1,0 +1,23 @@
+import { NavLink } from 'react-router-dom';
+
+function AdminNav() {
+  return (
+    <nav className="admin__actions" aria-label="Administración">
+      <NavLink
+        to="/admin/productos"
+        className="btn btn--ghost admin__nav-link"
+      >
+        Productos
+      </NavLink>
+
+      <NavLink
+        to="/admin/pedidos"
+        className="btn btn--ghost admin__nav-link"
+      >
+        Pedidos
+      </NavLink>
+    </nav>
+  );
+}
+
+export default AdminNav;

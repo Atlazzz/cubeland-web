@@ -15,6 +15,7 @@ import ComingSoonPage from './pages/ComingSoonPage';
 import OrdersPage from './pages/OrdersPage';
 import StaffRoute from './components/StaffRoute';
 import AdminProductsPage from './pages/AdminProductsPage';
+import AdminOrdersPage from './pages/AdminOrdersPage';
 
 function App() {
   return (
@@ -82,6 +83,14 @@ function App() {
           element={
             <StaffRoute>
               <AdminProductsPage />
+            </StaffRoute>
+          }
+        />
+       <Route
+          path="/admin/pedidos"
+          element={
+            <StaffRoute>
+              <AdminOrdersPage />
             </StaffRoute>
           }
         />

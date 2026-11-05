@@ -130,3 +130,8 @@
     grid-template-columns: 1fr;
   }
 }
+
+.admin__nav-link.active {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
