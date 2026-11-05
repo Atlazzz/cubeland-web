@@ -97,9 +97,15 @@ function CartPage() {
                 <span>{moneda(total)}</span>
               </div>
               <p className="cart__note">El envío y el método de pago se eligen en el siguiente paso.</p>
-              <button className="btn btn--primary cart__checkout" disabled={hayProblemas}>
-                Continuar con el pedido
-              </button>
+              {hayProblemas ? (
+  <button className="btn btn--primary cart__checkout" disabled>
+    Continuar con el pedido
+  </button>
+) : (
+  <Link to="/pedido" className="btn btn--primary cart__checkout">
+    Continuar con el pedido
+  </Link>
+)}
               <Link to="/catalogo" className="btn btn--ghost cart__checkout cart__more">Seguir comprando</Link>
             </aside>
           </div>

@@ -62,7 +62,7 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ items: visible.items, total: visible.total, cantidad, cargando, agregar, cambiar, quitar }}
+      value={{ items: visible.items, total: visible.total, cantidad, cargando, agregar, cambiar, quitar, recargar }}
     >
       {children}
     </CartContext.Provider>

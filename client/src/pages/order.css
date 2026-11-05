@@ -1,0 +1,65 @@
+.ord { padding: 40px 0 56px; }
+.ord__inner { padding: 0 40px; max-width: 900px; display: grid; gap: 20px; }
+
+.ord__msg {
+  padding: 48px 40px;
+  color: var(--ink-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.ord__banner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(63, 145, 66, 0.15);
+  border: 1px solid var(--green);
+  border-radius: var(--radius-m);
+  padding: 16px 20px;
+}
+.ord__banner strong { color: var(--green); font-size: 16px; }
+
+.ord__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.ord__title { font-size: 28px; }
+.ord__date { color: var(--ink-faint); font-size: 13.5px; margin-top: 2px; }
+
+.ord__status { font-size: 12.5px; font-weight: 600; padding: 5px 12px; border-radius: 20px; }
+.ord__status--pending_payment { background: rgba(239, 201, 61, 0.15); color: var(--yellow); }
+.ord__status--preparing { background: rgba(52, 101, 176, 0.2); color: #7ea6e8; }
+.ord__status--shipped { background: rgba(242, 147, 43, 0.15); color: var(--orange); }
+.ord__status--delivered { background: rgba(63, 145, 66, 0.2); color: var(--green); }
+.ord__status--cancelled { background: rgba(232, 67, 42, 0.15); color: var(--red); }
+
+.ord__note {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--yellow);
+  border-radius: var(--radius-s);
+  padding: 14px 18px;
+  font-size: 14px;
+  color: var(--ink-dim);
+}
+
+.ord__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.ord__card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 18px 20px; }
+.ord__card h2 { font-size: 15px; margin-bottom: 8px; }
+.ord__card p { font-size: 14px; }
+.ord__muted { color: var(--ink-dim); margin-top: 6px; }
+
+.ord__items { list-style: none; display: grid; gap: 8px; padding-bottom: 14px; margin-bottom: 12px; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-dim); }
+.ord__items li { display: flex; justify-content: space-between; gap: 12px; }
+.ord__line { display: flex; justify-content: space-between; font-size: 14px; color: var(--ink-dim); padding: 4px 0; }
+.ord__line--total { color: var(--ink); font-size: 17px; font-weight: 600; border-top: 1px solid var(--line); margin-top: 8px; padding-top: 12px; }
+
+.ord .btn { justify-self: start; }
+
+@media (max-width: 900px) {
+  .ord__inner { padding: 0 18px; }
+  .ord__msg { padding: 48px 18px; }
+}
+
+@media (max-width: 640px) {
+  .ord__grid { grid-template-columns: 1fr; }
+}

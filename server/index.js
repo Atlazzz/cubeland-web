@@ -7,6 +7,9 @@ import productRoutes from './routes/productRoutes.js';
 import filterRoutes from './routes/filterRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
+import addressRoutes from './routes/addressRoutes.js';
+import shippingRoutes from './routes/shippingRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 import { requireAuth, requireRole } from './middleware/auth.js';
 
 if (!process.env.JWT_SECRET) {
@@ -33,6 +36,9 @@ app.use('/api/productos', productRoutes);
 app.use('/api/filtros', filterRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/carrito', cartRoutes);
+app.use('/api/direcciones', addressRoutes);
+app.use('/api/envio', shippingRoutes);
+app.use('/api/pedidos', orderRoutes);
 
 // Ruta de prueba: solo el personal autorizado puede entrar (RF-23)
 app.get('/api/admin/ping', requireAuth, requireRole('staff'), (req, res) => {
