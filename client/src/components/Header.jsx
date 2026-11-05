@@ -49,6 +49,14 @@ function Header() {
               >
                 Mis pedidos
               </NavLink>
+               {user.role === 'staff' && (
+                <NavLink
+                  to="/admin/productos"
+                  className="btn btn--ghost btn--sm"
+                >
+                  Administración
+                </NavLink>
+              )}
               <button className="btn btn--ghost btn--sm" onClick={logout}>Salir</button>
             </>
           ) : (

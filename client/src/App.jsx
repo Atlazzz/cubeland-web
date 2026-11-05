@@ -13,6 +13,8 @@ import CheckoutPage from './pages/CheckoutPage';
 import OrderDetailPage from './pages/OrderDetailPage';
 import ComingSoonPage from './pages/ComingSoonPage';
 import OrdersPage from './pages/OrdersPage';
+import StaffRoute from './components/StaffRoute';
+import AdminProductsPage from './pages/AdminProductsPage';
 
 function App() {
   return (
@@ -73,6 +75,14 @@ function App() {
               titulo="Contacto"
               descripcion="Pronto podrás ver nuestros datos de contacto, la ubicación en el mapa y enviarnos un mensaje."
             />
+          }
+        />
+        <Route
+          path="/admin/productos"
+          element={
+            <StaffRoute>
+              <AdminProductsPage />
+            </StaffRoute>
           }
         />
       </Routes>

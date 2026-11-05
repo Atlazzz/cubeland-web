@@ -11,6 +11,7 @@ import addressRoutes from './routes/addressRoutes.js';
 import shippingRoutes from './routes/shippingRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import { requireAuth, requireRole } from './middleware/auth.js';
+import adminProductRoutes from './routes/adminProductRoutes.js';
 
 if (!process.env.JWT_SECRET) {
   console.error('Falta JWT_SECRET en el archivo .env');
@@ -39,6 +40,7 @@ app.use('/api/carrito', cartRoutes);
 app.use('/api/direcciones', addressRoutes);
 app.use('/api/envio', shippingRoutes);
 app.use('/api/pedidos', orderRoutes);
+app.use('/api/admin/productos', adminProductRoutes);
 
 // Ruta de prueba: solo el personal autorizado puede entrar (RF-23)
 app.get('/api/admin/ping', requireAuth, requireRole('staff'), (req, res) => {
