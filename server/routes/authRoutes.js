@@ -6,8 +6,6 @@ import { requireAuth } from '../middleware/auth.js';
 
 const router = Router();
 
-const MAX_INTENTOS = 5;
-const MINUTOS_BLOQUEO = 15;
 const EMAIL_VALIDO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const opcionesCookie = {
@@ -86,35 +84,13 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ mensaje: 'Escribe tu correo y tu contraseña' });
     }
 
-    const [filas] = await pool.query(
-      `SELECT *, (locked_until IS NOT NULL AND locked_until > NOW()) AS bloqueado
-       FROM users WHERE email = ?`,
-      [correo]
-    );
+    const [filas] = await pool.query('SELECT * FROM users WHERE email = ?', [correo]);
     const usuario = filas[0];
     if (!usuario) return res.status(401).json(generico);
 
-    if (usuario.bloqueado) {
-      return res.status(429).json({
-        mensaje: `Demasiados intentos fallidos. Intenta de nuevo en ${MINUTOS_BLOQUEO} minutos`,
-      });
-    }
-
     const coincide = await bcrypt.compare(clave, usuario.password_hash);
-    if (!coincide) {
-      const intentos = usuario.failed_attempts + 1;
-      if (intentos >= MAX_INTENTOS) {
-        await pool.query(
-          'UPDATE users SET failed_attempts = 0, locked_until = DATE_ADD(NOW(), INTERVAL ? MINUTE) WHERE id = ?',
-          [MINUTOS_BLOQUEO, usuario.id]
-        );
-      } else {
-        await pool.query('UPDATE users SET failed_attempts = ? WHERE id = ?', [intentos, usuario.id]);
-      }
-      return res.status(401).json(generico);
-    }
+    if (!coincide) return res.status(401).json(generico);
 
-    await pool.query('UPDATE users SET failed_attempts = 0, locked_until = NULL WHERE id = ?', [usuario.id]);
     iniciarSesion(res, usuario);
     res.json(datosPublicos(usuario));
   } catch (error) {

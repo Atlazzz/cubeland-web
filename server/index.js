@@ -6,6 +6,7 @@ import pool from './db.js';
 import productRoutes from './routes/productRoutes.js';
 import filterRoutes from './routes/filterRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 import { requireAuth, requireRole } from './middleware/auth.js';
 
 if (!process.env.JWT_SECRET) {
@@ -31,6 +32,7 @@ app.get('/api/salud', async (req, res) => {
 app.use('/api/productos', productRoutes);
 app.use('/api/filtros', filterRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/carrito', cartRoutes);
 
 // Ruta de prueba: solo el personal autorizado puede entrar (RF-23)
 app.get('/api/admin/ping', requireAuth, requireRole('staff'), (req, res) => {

@@ -1,5 +1,6 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
 import logoCubo from '../assets/images/logo-cubeland-cubo-claro.png';
 import logoNombre from '../assets/images/logo-cubeland-nombre-claro.png';
 import './header.css';
@@ -7,6 +8,7 @@ import './header.css';
 function Header() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const { cantidad } = useCart();
 
   function buscar(e) {
     e.preventDefault();
@@ -46,7 +48,10 @@ function Header() {
           ) : (
             <Link to="/iniciar-sesion" className="btn btn--ghost btn--sm">Iniciar sesión</Link>
           )}
-          <button className="icon-btn" aria-label="Carrito">🛒</button>
+          <Link to="/carrito" className="icon-btn" aria-label="Carrito">
+            🛒
+            {cantidad > 0 && <span className="header__cart-count">{cantidad}</span>}
+          </Link>
         </div>
       </div>
     </header>

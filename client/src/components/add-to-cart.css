@@ -1,0 +1,15 @@
+.atc { margin-top: 26px; max-width: 360px; }
+.atc__row { display: flex; gap: 12px; align-items: stretch; }
+
+.atc__qty { display: flex; align-items: center; border: 1px solid var(--line-strong); border-radius: var(--radius-s); }
+.atc__qty button { width: 36px; align-self: stretch; background: transparent; border: none; color: var(--ink); font-size: 16px; }
+.atc__qty button:disabled { color: var(--ink-faint); cursor: not-allowed; }
+.atc__qty span { min-width: 32px; text-align: center; }
+
+.atc__add { flex: 1; padding: 12px 18px; }
+.atc__add:disabled { opacity: 0.6; cursor: wait; }
+
+.atc__msg { margin-top: 12px; font-size: 13.5px; }
+.atc__msg--ok { color: var(--green); }
+.atc__msg--ok a { color: var(--ink); text-decoration: underline; margin-left: 8px; }
+.atc__msg--error { color: var(--red); }

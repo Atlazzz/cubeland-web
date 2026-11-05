@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { API_URL } from '../config';
 import logoCubo from '../assets/images/logo-cubeland-cubo-claro.png';
 import './product-detail.css';
+import AddToCart from '../components/AddToCart';
 
 const NIVELES = {
   beginner: 'Principiante',
@@ -121,9 +122,8 @@ function ProductDetail({ id }) {
               </ul>
             )}
 
-            <button className="btn btn--primary pd__buy" disabled={agotado}>
+            <AddToCart productId={producto.id} stock={producto.stock} />
               {agotado ? 'Producto agotado' : 'Agregar al carrito'}
-            </button>
           </div>
         </div>
       </div>
