@@ -14,6 +14,7 @@ import { requireAuth, requireRole } from './middleware/auth.js';
 import adminProductRoutes from './routes/adminProductRoutes.js';
 import adminOrderRoutes from './routes/adminOrderRoutes.js';
 import tutorialRoutes from './routes/tutorialRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 
 if (!process.env.JWT_SECRET) {
   console.error('Falta JWT_SECRET en el archivo .env');
@@ -21,7 +22,7 @@ if (!process.env.JWT_SECRET) {
 }
 
 const app = express();
-console.log('INDEX ACTUAL:', import.meta.url);
+//console.log('INDEX ACTUAL:', import.meta.url);
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json({ limit: '2mb' }));
 app.use(cookieParser());
@@ -46,6 +47,7 @@ app.use('/api/envio', shippingRoutes);
 app.use('/api/pedidos', orderRoutes);
 app.use('/api/admin/productos', adminProductRoutes);
 app.use('/api/tutoriales', tutorialRoutes);
+app.use('/api/contacto', contactRoutes);
 
 // Ruta de prueba: solo el personal autorizado puede entrar (RF-23)
 app.get('/api/admin/ping', requireAuth, requireRole('staff'), (req, res) => {

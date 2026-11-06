@@ -11,7 +11,7 @@ import RegisterPage from './pages/RegisterPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderDetailPage from './pages/OrderDetailPage';
-import ComingSoonPage from './pages/ComingSoonPage';
+//import ComingSoonPage from './pages/ComingSoonPage';
 import OrdersPage from './pages/OrdersPage';
 import StaffRoute from './components/StaffRoute';
 import AdminProductsPage from './pages/AdminProductsPage';
@@ -19,6 +19,8 @@ import AdminOrdersPage from './pages/AdminOrdersPage';
 import AdminTutorialsPage from './pages/AdminTutorialsPage';
 import TutorialsPage from './pages/TutorialsPage';
 import TutorialDetailPage from './pages/TutorialDetailPage';
+import ContactPage from './pages/ContactPage';
+import AdminMessagesPage from './pages/AdminMessagesPage';
 
 function App() {
   return (
@@ -73,12 +75,7 @@ function App() {
         />
         <Route
           path="/contacto"
-          element={
-            <ComingSoonPage
-              titulo="Contacto"
-              descripcion="Pronto podrás ver nuestros datos de contacto, la ubicación en el mapa y enviarnos un mensaje."
-            />
-          }
+          element={<ContactPage />}
         />
         <Route
           path="/admin/productos"
@@ -104,6 +101,14 @@ function App() {
             </StaffRoute>
           }
         />
+        <Route
+          path="/admin/mensajes"
+          element={
+            <StaffRoute>
+              <AdminMessagesPage />
+            </StaffRoute>
+          }
+        /> 
       </Routes>
       <Footer />
     </>
