@@ -249,8 +249,10 @@ function AdminProductsPage() {
                   >
                     <option value="">Sin dificultad</option>
                     <option value="beginner">Principiante</option>
+                    <option value="easy">Fácil</option>
                     <option value="intermediate">Intermedio</option>
                     <option value="advanced">Avanzado</option>
+                    <option value="expert">Experto</option>
                   </select>
                 </label>
               </div>

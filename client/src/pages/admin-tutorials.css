@@ -1,0 +1,47 @@
+#tutorial-editor {
+  scroll-margin-top: 90px;
+}
+
+.tut-admin__box,
+.tut-admin__case {
+  min-width: 0;
+  padding: 20px;
+  display: grid;
+  gap: 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-m);
+}
+
+.tut-admin__box {
+  background: var(--bg-2);
+}
+
+.tut-admin__case {
+  background: var(--surface);
+  border-left: 3px solid var(--yellow);
+}
+
+.tut-admin__box h3 {
+  font-size: 18px;
+}
+
+.tut-admin__case h4 {
+  font-size: 16px;
+}
+
+.tut-admin__help {
+  color: var(--ink-dim);
+  font-size: 13px;
+}
+
+#tutorial-editor fieldset > button,
+.tut-admin__box > button {
+  justify-self: start;
+}
+
+@media (max-width: 640px) {
+  .tut-admin__box,
+  .tut-admin__case {
+    padding: 14px;
+  }
+}

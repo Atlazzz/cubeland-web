@@ -1,0 +1,237 @@
+.tutorial-page {
+  padding: 40px 0 64px;
+}
+
+.tutorial-page__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  gap: 28px;
+}
+
+.tutorial-page h1 {
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.tutorial-page__muted {
+  color: var(--ink-dim);
+  font-size: 14px;
+}
+
+.tutorial-page__filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+}
+
+.tutorial-page__filters label {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--ink-dim);
+}
+
+.tutorial-page__filters input,
+.tutorial-page__filters select {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  font: inherit;
+}
+
+.tutorial-page__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tutorial-page__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.tutorial-page__card {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  display: flex;
+  flex-direction: column;
+}
+
+.tutorial-page__thumb,
+.tutorial-page__placeholder {
+  width: 100%;
+  height: 210px;
+}
+
+.tutorial-page__thumb {
+  object-fit: cover;
+}
+
+.tutorial-page__placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--bg-2);
+  color: var(--ink-dim);
+}
+
+.tutorial-page__card-body {
+  padding: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tutorial-page__card-body h2 {
+  font-size: 20px;
+}
+
+.tutorial-page__card-body .btn {
+  margin-top: auto;
+}
+
+.tutorial-page__back {
+  color: var(--ink-dim);
+  justify-self: start;
+}
+
+.tutorial-page__back:hover {
+  color: var(--yellow);
+}
+
+/* Lectura del tutorial */
+
+.tutorial-read {
+  max-width: 1000px;
+}
+
+.tutorial-read__cover {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  background: var(--surface);
+  border-radius: var(--radius-m);
+}
+
+.tutorial-read__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tutorial-read__tags span {
+  padding: 5px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  color: var(--ink-dim);
+  font-size: 13px;
+}
+
+.tutorial-read__intro,
+.tutorial-read__step,
+.tutorial-read__case {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.tutorial-read__step {
+  padding-top: 32px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.tutorial-read__step h2 {
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.tutorial-read__case {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+}
+
+.tutorial-read__case h3 {
+  color: var(--yellow);
+  font-size: 22px;
+}
+
+.tutorial-read__text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+}
+
+.tutorial-read__image {
+  max-width: 100%;
+  height: auto;
+  justify-self: center;
+  border-radius: var(--radius-s);
+}
+
+.tutorial-read__algorithm {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  background: var(--bg);
+  border-radius: var(--radius-s);
+}
+
+.tutorial-read__algorithm h4 {
+  font-size: 14px;
+  color: var(--ink-dim);
+}
+
+.tutorial-read__algorithm code {
+  color: var(--yellow);
+  font-size: clamp(19px, 3vw, 26px);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.tutorial-read > .btn {
+  justify-self: start;
+}
+
+@media (max-width: 900px) {
+  .tutorial-page__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tutorial-page__filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tutorial-page__filters label:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .tutorial-page__inner {
+    padding: 0 18px;
+  }
+
+  .tutorial-page__grid,
+  .tutorial-page__filters {
+    grid-template-columns: 1fr;
+  }
+
+  .tutorial-read__case {
+    padding: 18px;
+  }
+}

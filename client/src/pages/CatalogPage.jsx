@@ -6,8 +6,10 @@ import './catalog.css';
 
 const NIVELES = {
   beginner: 'Principiante',
+  easy: 'Fácil',
   intermediate: 'Intermedio',
   advanced: 'Avanzado',
+  expert: 'Experto',
 };
 
 function CatalogPage() {
@@ -170,11 +172,12 @@ function CatalogPage() {
                 key={p.id}
                 id={p.id}
                 nombre={p.name}
-                tipo={p.cube_type || p.category}
-                nivel={NIVELES[p.difficulty]}
+                categoria={p.category || ''}
+                tipo={p.cube_type || ''}
+                nivel={NIVELES[p.difficulty] || ''}
                 descripcion={p.description}
                 precio={Number(p.price)}
-                stock={p.stock}
+                stock={Number(p.stock)}
               />
             ))}
           </div>

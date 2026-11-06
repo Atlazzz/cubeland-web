@@ -6,8 +6,10 @@ import './featured.css';
 
 const NIVELES = {
   beginner: 'Principiante',
+  easy: 'Fácil',
   intermediate: 'Intermedio',
   advanced: 'Avanzado',
+  expert: 'Experto',
 };
 
 function FeaturedProducts() {
@@ -63,6 +65,7 @@ function FeaturedProducts() {
                 key={p.id}
                 id={p.id}
                 nombre={p.name}
+                categoria={p.category || ''}
                 tipo={p.cube_type || ''}
                 nivel={NIVELES[p.difficulty] || ''}
                 descripcion={p.description || ''}

@@ -7,8 +7,10 @@ import AddToCart from '../components/AddToCart';
 
 const NIVELES = {
   beginner: 'Principiante',
+  easy: 'Fácil',
   intermediate: 'Intermedio',
   advanced: 'Avanzado',
+  expert: 'Experto',
 };
 
 function ProductDetail({ id }) {

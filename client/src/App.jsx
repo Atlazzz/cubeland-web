@@ -16,6 +16,9 @@ import OrdersPage from './pages/OrdersPage';
 import StaffRoute from './components/StaffRoute';
 import AdminProductsPage from './pages/AdminProductsPage';
 import AdminOrdersPage from './pages/AdminOrdersPage';
+import AdminTutorialsPage from './pages/AdminTutorialsPage';
+import TutorialsPage from './pages/TutorialsPage';
+import TutorialDetailPage from './pages/TutorialDetailPage';
 
 function App() {
   return (
@@ -62,12 +65,11 @@ function App() {
         />
         <Route
           path="/tutoriales"
-          element={
-            <ComingSoonPage
-              titulo="Tutoriales"
-              descripcion="Estamos preparando guías paso a paso con imágenes, por tipo de cubo y nivel de dificultad."
-            />
-          }
+          element={<TutorialsPage />}
+        />
+        <Route
+          path="/tutoriales/:id"
+          element={<TutorialDetailPage />}
         />
         <Route
           path="/contacto"
@@ -91,6 +93,14 @@ function App() {
           element={
             <StaffRoute>
               <AdminOrdersPage />
+            </StaffRoute>
+          }
+        />
+        <Route
+          path="/admin/tutoriales"
+          element={
+            <StaffRoute>
+              <AdminTutorialsPage />
             </StaffRoute>
           }
         />
