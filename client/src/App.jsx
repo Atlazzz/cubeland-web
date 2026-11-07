@@ -21,6 +21,7 @@ import TutorialsPage from './pages/TutorialsPage';
 import TutorialDetailPage from './pages/TutorialDetailPage';
 import ContactPage from './pages/ContactPage';
 import AdminMessagesPage from './pages/AdminMessagesPage';
+import InfoPage from './pages/InfoPage';
 
 function App() {
   return (
@@ -109,6 +110,18 @@ function App() {
             </StaffRoute>
           }
         /> 
+        <Route
+          path="/aviso-de-privacidad"
+          element={<InfoPage tipo="privacidad" />}
+        />
+        <Route
+          path="/terminos-y-condiciones"
+          element={<InfoPage tipo="terminos" />}
+        />
+        <Route
+          path="/politica-de-devoluciones"
+          element={<InfoPage tipo="devoluciones" />}
+        />
       </Routes>
       <Footer />
     </>
