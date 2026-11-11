@@ -103,12 +103,6 @@ function TutorialDetail({ id }) {
               <section className="tutorial-read__step" key={paso.id}>
                 <h2>{paso.step_number}. {paso.title}</h2>
 
-                {paso.instruction && (
-                  <p className="tutorial-read__text">
-                    {paso.instruction}
-                  </p>
-                )}
-
                 {paso.image_url && (
                   <img
                     className="tutorial-read__image"
@@ -116,6 +110,12 @@ function TutorialDetail({ id }) {
                     alt={`Ilustración del paso ${paso.step_number}: ${paso.title}`}
                     loading="lazy"
                   />
+                )}
+
+                {paso.instruction && (
+                  <p className="tutorial-read__text">
+                    {paso.instruction}
+                  </p>
                 )}
 
                 {paso.cases.map((caso) => (
@@ -127,7 +127,7 @@ function TutorialDetail({ id }) {
 
                     {caso.case_image_url && (
                       <img
-                        className="tutorial-read__image"
+                        className="tutorial-read__image tutorial-read__case-image"
                         src={caso.case_image_url}
                         alt={caso.case_image_alt || ''}
                         loading="lazy"
