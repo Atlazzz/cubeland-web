@@ -6,7 +6,18 @@ const COLORES = {
   g: '#3F9142', o: '#F2932B', w: '#F5F3EF', k: '#302F34',
 };
 
-function ProductCard({ id, nombre, tipo, nivel, descripcion, precio, stock, colores = 'ybrgowkkk' }) {
+function ProductCard({
+  id,
+  nombre,
+  categoria,
+  tipo,
+  nivel,
+  descripcion,
+  precio,
+  stock,
+  imagen,
+  colores = 'ybrgowkkk',
+}) {
 
   const agotado = stock === 0;
   const pocas = stock > 0 && stock <= 5;
@@ -19,17 +30,35 @@ function ProductCard({ id, nombre, tipo, nivel, descripcion, precio, stock, colo
           <span className={`card__dot ${pocas ? 'card__dot--low' : ''} ${agotado ? 'card__dot--out' : ''}`}></span>
           {textoStock}
         </span>
-        <div className="mini-cube">
-          {colores.split('').map((c, i) => (
-            <span key={i} style={{ background: COLORES[c] }}></span>
-          ))}
-        </div>
+        {imagen ? (
+  <img
+    className="card__image"
+    src={imagen}
+    alt={nombre}
+    loading="lazy"
+  />
+) : (
+  <div className="mini-cube" aria-hidden="true">
+    {colores.split('').map((c, i) => (
+      <span key={i} style={{ background: COLORES[c] }} />
+    ))}
+  </div>
+)}
       </div>
 
       <div className="card__body">
         <div className="card__tags">
-          <span className="card__tag">{tipo}</span>
-          {nivel && <span className="card__tag">{nivel}</span>}
+          {categoria && (
+            <span className="card__tag">{categoria}</span>
+          )}
+
+          {tipo && (
+            <span className="card__tag">{tipo}</span>
+          )}
+
+          {nivel && (
+            <span className="card__tag">{nivel}</span>
+          )}
         </div>
         <h3 className="card__title">{nombre}</h3>
         <p className="card__desc">{descripcion}</p>

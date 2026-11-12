@@ -135,3 +135,14 @@
   color: var(--yellow);
   border-color: var(--yellow);
 }
+
+.admin__message-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+
+.admin__message-date {
+  color: var(--ink-dim);
+  font-size: 13px;
+}

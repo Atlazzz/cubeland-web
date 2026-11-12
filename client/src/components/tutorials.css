@@ -71,3 +71,48 @@
 @media (max-width: 560px) {
   .tut__grid { grid-template-columns: 1fr; }
 }
+
+.tut__thumb {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.tut__cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.tut__steps,
+.tut__dots {
+  position: relative;
+  z-index: 1;
+}
+
+.tut__details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.tut__step-count {
+  font-size: 13px;
+  color: var(--ink-dim);
+}
+
+.tut__details .tut__dots {
+  position: static;
+  margin: 0;
+}
+
+.tut__body > .btn {
+  margin-top: 14px;
+}

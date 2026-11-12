@@ -6,7 +6,13 @@ const router = Router();
 
 router.use(requireAuth, requireRole('staff'));
 
-const NIVELES = ['beginner', 'intermediate', 'advanced'];
+const NIVELES = [
+  'beginner',
+  'easy',
+  'intermediate',
+  'advanced',
+  'expert',
+];
 
 function validarProducto(body) {
   const {

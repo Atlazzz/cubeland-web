@@ -11,11 +11,17 @@ import RegisterPage from './pages/RegisterPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderDetailPage from './pages/OrderDetailPage';
-import ComingSoonPage from './pages/ComingSoonPage';
+//import ComingSoonPage from './pages/ComingSoonPage';
 import OrdersPage from './pages/OrdersPage';
 import StaffRoute from './components/StaffRoute';
 import AdminProductsPage from './pages/AdminProductsPage';
 import AdminOrdersPage from './pages/AdminOrdersPage';
+import AdminTutorialsPage from './pages/AdminTutorialsPage';
+import TutorialsPage from './pages/TutorialsPage';
+import TutorialDetailPage from './pages/TutorialDetailPage';
+import ContactPage from './pages/ContactPage';
+import AdminMessagesPage from './pages/AdminMessagesPage';
+import InfoPage from './pages/InfoPage';
 
 function App() {
   return (
@@ -62,21 +68,15 @@ function App() {
         />
         <Route
           path="/tutoriales"
-          element={
-            <ComingSoonPage
-              titulo="Tutoriales"
-              descripcion="Estamos preparando guías paso a paso con imágenes, por tipo de cubo y nivel de dificultad."
-            />
-          }
+          element={<TutorialsPage />}
+        />
+        <Route
+          path="/tutoriales/:id"
+          element={<TutorialDetailPage />}
         />
         <Route
           path="/contacto"
-          element={
-            <ComingSoonPage
-              titulo="Contacto"
-              descripcion="Pronto podrás ver nuestros datos de contacto, la ubicación en el mapa y enviarnos un mensaje."
-            />
-          }
+          element={<ContactPage />}
         />
         <Route
           path="/admin/productos"
@@ -93,6 +93,34 @@ function App() {
               <AdminOrdersPage />
             </StaffRoute>
           }
+        />
+        <Route
+          path="/admin/tutoriales"
+          element={
+            <StaffRoute>
+              <AdminTutorialsPage />
+            </StaffRoute>
+          }
+        />
+        <Route
+          path="/admin/mensajes"
+          element={
+            <StaffRoute>
+              <AdminMessagesPage />
+            </StaffRoute>
+          }
+        /> 
+        <Route
+          path="/aviso-de-privacidad"
+          element={<InfoPage tipo="privacidad" />}
+        />
+        <Route
+          path="/terminos-y-condiciones"
+          element={<InfoPage tipo="terminos" />}
+        />
+        <Route
+          path="/politica-de-devoluciones"
+          element={<InfoPage tipo="devoluciones" />}
         />
       </Routes>
       <Footer />

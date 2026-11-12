@@ -16,6 +16,20 @@ function AdminNav() {
       >
         Pedidos
       </NavLink>
+
+       <NavLink
+        to="/admin/tutoriales"
+        className="btn btn--ghost admin__nav-link"
+      >
+        Tutoriales
+      </NavLink>
+
+       <NavLink
+        to="/admin/mensajes"
+        className="btn btn--ghost admin__nav-link"
+      >
+        Mensajes
+      </NavLink>
     </nav>
   );
 }
