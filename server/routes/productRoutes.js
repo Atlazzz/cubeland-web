@@ -75,7 +75,14 @@ router.get('/', async (req, res) => {
     const [productos] = await pool.query(
       `SELECT p.id, p.name, p.description, p.price, p.stock, p.difficulty,
               c.name  AS category,
-              ct.name AS cube_type
+              ct.name AS cube_type,
+(
+  SELECT pi.image_url
+  FROM product_images pi
+  WHERE pi.product_id = p.id
+  ORDER BY pi.sort_order, pi.id
+  LIMIT 1
+) AS image_url
        FROM products p
        JOIN categories c ON c.id = p.category_id
        LEFT JOIN cube_types ct ON ct.id = p.cube_type_id
@@ -97,7 +104,14 @@ router.get('/destacados', async (req, res) => {
       `SELECT p.id, p.name, p.description, p.price, p.stock,
               p.difficulty,
               c.name AS category,
-              ct.name AS cube_type
+              ct.name AS cube_type,
+(
+  SELECT pi.image_url
+  FROM product_images pi
+  WHERE pi.product_id = p.id
+  ORDER BY pi.sort_order, pi.id
+  LIMIT 1
+) AS image_url
        FROM products p
        JOIN categories c ON c.id = p.category_id
        LEFT JOIN cube_types ct ON ct.id = p.cube_type_id

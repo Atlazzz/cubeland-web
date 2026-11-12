@@ -72,6 +72,7 @@ function FeaturedProducts() {
                 precio={Number(p.price)}
                 stock={Number(p.stock)}
                 colores="rowbygkkk"
+                imagen={p.image_url}
               />
             ))}
           </div>

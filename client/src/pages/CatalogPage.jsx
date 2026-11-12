@@ -178,6 +178,7 @@ function CatalogPage() {
                 descripcion={p.description}
                 precio={Number(p.price)}
                 stock={Number(p.stock)}
+                imagen={p.image_url}
               />
             ))}
           </div>

@@ -15,6 +15,7 @@ function ProductCard({
   descripcion,
   precio,
   stock,
+  imagen,
   colores = 'ybrgowkkk',
 }) {
 
@@ -29,11 +30,20 @@ function ProductCard({
           <span className={`card__dot ${pocas ? 'card__dot--low' : ''} ${agotado ? 'card__dot--out' : ''}`}></span>
           {textoStock}
         </span>
-        <div className="mini-cube">
-          {colores.split('').map((c, i) => (
-            <span key={i} style={{ background: COLORES[c] }}></span>
-          ))}
-        </div>
+        {imagen ? (
+  <img
+    className="card__image"
+    src={imagen}
+    alt={nombre}
+    loading="lazy"
+  />
+) : (
+  <div className="mini-cube" aria-hidden="true">
+    {colores.split('').map((c, i) => (
+      <span key={i} style={{ background: COLORES[c] }} />
+    ))}
+  </div>
+)}
       </div>
 
       <div className="card__body">
